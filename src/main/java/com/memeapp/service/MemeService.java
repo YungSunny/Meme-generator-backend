@@ -38,7 +38,7 @@ public class MemeService {
         final Color color = blackText ? Color.BLACK : Color.WHITE;
 
         Graphics graphics = image.getGraphics();
-        Font font = new Font("Impact", Font.PLAIN, 48);
+        Font font = new Font("Impact", Font.BOLD, 48);
         graphics.setFont(font);
         FontMetrics fontMetrics = graphics.getFontMetrics(font);
 
