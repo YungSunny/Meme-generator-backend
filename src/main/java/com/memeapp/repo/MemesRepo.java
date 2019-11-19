@@ -14,7 +14,12 @@ import java.util.List;
 @Repository
 public class MemesRepo {
 
-   public List<Meme> getMeme() throws IOException {
+    private final int minWidth = 430;
+    private final int maxWidth = 501;
+    private final int minHeight = 299;
+    private final int maxHeight = 501;
+
+    public List<Meme> getMeme() throws IOException {
 
        List<Meme> meme = new ArrayList<>();
 
@@ -26,16 +31,14 @@ public class MemesRepo {
         JSONObject data = root.getJSONObject("data");
         JSONArray memes = data.getJSONArray("memes");
 
-       for (int i = 0; i < memes.length(); i++) {
-           if(memes.getJSONObject(i).getInt("width") < 501 && memes.getJSONObject(i).getInt("width") > 430){
-               if (memes.getJSONObject(i).getInt("height") < 501 && memes.getJSONObject(i).getInt("height") > 299){
+        for (int i = 0; i < memes.length(); i++) {
+           if(memes.getJSONObject(i).getInt("width") < maxWidth && memes.getJSONObject(i).getInt("width") > minWidth){
+               if (memes.getJSONObject(i).getInt("height") < maxHeight && memes.getJSONObject(i).getInt("height") > minHeight){
                    meme.add(new Meme(memes.getJSONObject(i).getInt("width"), memes.getJSONObject(i).getInt("height"),
                            memes.getJSONObject(i).getString("url")));
                }
            }
-       }
-
+        }
         return meme;
     }
-
 }
