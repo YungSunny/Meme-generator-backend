@@ -37,21 +37,21 @@ public class MemeService {
 
         final Color color = blackText ? Color.BLACK : Color.WHITE;
 
-        Graphics g = image.getGraphics();
+        Graphics graphics = image.getGraphics();
         Font font = new Font("Impact", Font.PLAIN, 48);
-        g.setFont(font);
-        FontMetrics fontMetrics = g.getFontMetrics(font);
+        graphics.setFont(font);
+        FontMetrics fontMetrics = graphics.getFontMetrics(font);
 
         int upperTextStartX = ((currentWidth - fontMetrics.stringWidth(uppperText)) / 2);
         int bottomTextStartX = ((currentWidth - fontMetrics.stringWidth(bottomText)) / 2);
         int upperTextStartY = currentHeight / 8;
         int bottomTextStartY = currentHeight - 20;
 
-       g.setColor(color);
+        graphics.setColor(color);
 
-        g.drawString(uppperText, upperTextStartX, upperTextStartY);
-        g.drawString(bottomText, bottomTextStartX, bottomTextStartY);
-        g.dispose();
+        graphics.drawString(uppperText, upperTextStartX, upperTextStartY);
+        graphics.drawString(bottomText, bottomTextStartX, bottomTextStartY);
+        graphics.dispose();
 
         ImageIO.write(image, "jpg", new File("resources/meme.jpg"));
     }
